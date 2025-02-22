@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.jsx?$": "babel-jest",
@@ -9,5 +9,3 @@ const config = {
   moduleFileExtensions: ["js", "jsx", "json", "node"],
   moduleDirectories: ["node_modules"],
 };
-
-export default config;
