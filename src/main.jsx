@@ -14,7 +14,7 @@ const root = createRoot(container);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/cc-reddit-app">
       <Provider store={store}>
         <App />
       </Provider>
