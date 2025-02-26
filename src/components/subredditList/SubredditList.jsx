@@ -1,5 +1,3 @@
-import { ListGroup } from "reactstrap";
-
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -68,7 +66,7 @@ function SubredditsList() {
           ></button>
         </div>
         <div className="offcanvas-body text-start">
-          <ListGroup id="subreddits">
+          <div className="list-group" id="subreddits">
             {status === "loading" ? (
               <p>Loading subreddits...</p>
             ) : (
@@ -81,7 +79,7 @@ function SubredditsList() {
                 />
               ))
             )}
-          </ListGroup>
+          </div>
         </div>
       </div>
     </>
