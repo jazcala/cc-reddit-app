@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchPostById } from "../api/api";
+// TODO Remove stylesheet
 import styles from "./FullArticlePage.module.css";
 import { fetchComments } from "../api/api";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 import renderCommentWithLinks from "../utils/renderCommentWithLinks";
 import Counter from "../subcomponents/Counter";
 
@@ -57,7 +57,8 @@ const FullArticlePage = () => {
     <>
       <div className={styles.fullArticleContainer}>
         <button onClick={handleBackClick} className={styles.btnBack}>
-          <FaArrowLeft /> Back
+          <i className="bi bi-arrow-left fs-4 pe-2"></i>
+          Back
         </button>
 
         <h1>{post.title}</h1>
@@ -103,7 +104,7 @@ const FullArticlePage = () => {
               onClick={showCommentsHandler}
               className={styles.btnComments}
             >
-              <i className="bi bi-chat-left"></i>
+              <i className="bi bi-arrow-left"></i>
             </button>
           </div>
           <div className={styles.counter}>
@@ -122,7 +123,7 @@ const FullArticlePage = () => {
                 <li key={comment.id}>
                   <div className={styles.commentsContainer}>
                     <p className={styles.author}>
-                      <i class="bi bi-chat-left-text"></i> {comment.author}
+                      <i class="bi bi-arrow-left"></i> {comment.author}
                     </p>
                     <p>{renderCommentWithLinks(comment.body)}</p>
                   </div>
