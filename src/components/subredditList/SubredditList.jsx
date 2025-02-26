@@ -66,7 +66,7 @@ function SubredditsList() {
           ></button>
         </div>
         <div className="offcanvas-body text-start">
-          <div className="list-group" id="subreddits">
+          <ul className="list-group" id="subreddits">
             {status === "loading" ? (
               <p>Loading subreddits...</p>
             ) : (
@@ -79,7 +79,7 @@ function SubredditsList() {
                 />
               ))
             )}
-          </div>
+          </ul>
         </div>
       </div>
     </>

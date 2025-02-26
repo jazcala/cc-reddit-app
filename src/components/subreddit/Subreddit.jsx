@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { ListGroupItem } from "reactstrap";
 
 function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
   const { display_name, icon_img } = subreddit;
@@ -8,8 +7,10 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
   };
 
   return (
-    <ListGroupItem
-      className={selectedSubreddit === display_name ? "active" : ""}
+    <li
+      className={`list-group-item ${
+        selectedSubreddit === display_name ? "active" : ""
+      }`}
       onClick={handleClick}
       data-bs-dismiss="offcanvas"
     >
@@ -49,7 +50,7 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
         </span>
       )}
       <span className="text-capitalize">{display_name}</span>
-    </ListGroupItem>
+    </li>
   );
 }
 
