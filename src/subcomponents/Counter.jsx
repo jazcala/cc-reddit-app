@@ -1,4 +1,3 @@
-import { Card } from "reactstrap";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,7 +8,9 @@ function Counter({ postId }) {
   const dispatch = useDispatch();
 
   // Hole aktuellen Post aus Redux
-  const post = useSelector((state) => state.posts.posts.find((p) => p.id === postId));
+  const post = useSelector((state) =>
+    state.posts.posts.find((p) => p.id === postId)
+  );
 
   // Lokale States für sofortige UI-Updates
   const [score, setLocalScore] = useState(post?.score ?? 0);
@@ -62,13 +63,23 @@ function Counter({ postId }) {
   };
 
   return (
-    <Card color="light" outline className="p-0">
+    <div className="card border-0 p-0">
       <CounterButton
         direction="up"
         handleClick={onClickUp}
         color={voteState === "up" ? "green" : "black"}
       />
-      <h2 className="my-2" style={{ color: voteState === "up" ? "green" : voteState === "down" ? "red" : "black" }}>
+      <h2
+        className="my-2"
+        style={{
+          color:
+            voteState === "up"
+              ? "green"
+              : voteState === "down"
+              ? "red"
+              : "black",
+        }}
+      >
         {score >= 1000 ? `${Math.floor(score / 1000)}K` : score}
       </h2>
       <CounterButton
@@ -76,7 +87,7 @@ function Counter({ postId }) {
         handleClick={onClickDown}
         color={voteState === "down" ? "red" : "black"}
       />
-    </Card>
+    </div>
   );
 }
 
