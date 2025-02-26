@@ -24,7 +24,7 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
         >
           <i className="bi bi-reddit"></i>
         </span>
-      ) : (
+      ) : icon_img ? (
         <img
           src={icon_img}
           className="rounded-circle mx-2 bg-secondary"
@@ -32,10 +32,21 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
           width="35"
           height="35"
           onError={(e) => {
-            e.target.onerror = null; // Prevent infinite loop if placeholder also fails
-            e.target.className += " placeholder opacity-75"; // Or remove src entirely
+            e.target.onerror = null;
+            e.target.className += " placeholder opacity-75";
           }}
-        ></img>
+        />
+      ) : (
+        <span
+          className=" d-inline-flex align-items-center rounded-circle mx-2"
+          style={{
+            width: 35,
+            height: 35,
+            fontSize: "2.25rem",
+          }}
+        >
+          <i className="bi bi-reddit"></i>
+        </span>
       )}
       <span className="text-capitalize">{display_name}</span>
     </ListGroupItem>
