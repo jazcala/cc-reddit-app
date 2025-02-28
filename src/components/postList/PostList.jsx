@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostsAsync } from "../../features/posts/postSlice";
 import PostCard from "../post/PostCard";
-import { ListGroup } from "reactstrap";
 import { useEffect } from "react";
 /**
  * Component used to displayed the list of post
@@ -26,11 +25,11 @@ const PostList = () => {
   }
 
   return (
-    <ListGroup className="mx-0 px-0 ">
+    <ul className="list-group mx-0 px-0 ">
       {posts.map((post) => {
         return <PostCard key={post.id} post={post} />;
       })}
-    </ListGroup>
+    </ul>
   );
 };
 
