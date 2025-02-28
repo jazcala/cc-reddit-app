@@ -3,9 +3,9 @@ import { getImageUrl, getDescription } from "../../utils/helpers";
 import Counter from "../../subcomponents/Counter";
 import PropTypes from "prop-types";
 
-function Post({ post }) {
+function Post({ post, showLink }) {
   return (
-    <div className="card pb-0">
+    <div className="card p-2 border-0">
       <div className="row">
         <div className="col col-3">
           <Counter postId={post.id} />
@@ -30,15 +30,21 @@ function Post({ post }) {
         </div>
       </div>
       <h5 className="card-title my-2">{post.title}</h5>
-      <Link
-        to={`/post/${post.id}`}
-        className="link-underline-light my-2 text-end"
-      >
-        See full article
-      </Link>
       <div className="card-body">
         <p className="card-text">{getDescription(post)}</p>
       </div>
+      {showLink ? (
+        <div className="d-flex justify-content-end">
+          <Link
+            to={`/post/${post.id}`}
+            className="link-info link-offset-2 link-underline-opacity-50 my-2"
+          >
+            See full article
+          </Link>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

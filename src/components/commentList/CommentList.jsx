@@ -39,7 +39,15 @@ const CommentList = ({ post }) => {
     <div className=" border-top pt-2">
       <div className="row">
         <div className="col text-truncate align-button py-2 text-start ">
-          By <span className="text-primary fw-bold">{post.author}</span>
+          By{" "}
+          <a
+            href={`https://www.reddit.com/u/${post.author}`}
+            target="_blank"
+            rel="noreferrer"
+            className="link-info link-offset-2 link-underline-opacity-50 fw-bold"
+          >
+            {post.author}
+          </a>
         </div>
         <button
           className="col-4 btn text-end  w-auto"
@@ -55,10 +63,7 @@ const CommentList = ({ post }) => {
         </button>
       </div>
       <div className="collapse" id={`commentsList-${post.id}`}>
-        <ul
-          className="list-group"
-          // id="comments"
-        >
+        <ul className="list-group">
           {loading ? (
             <p>Loading...</p>
           ) : (

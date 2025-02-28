@@ -9,10 +9,10 @@ import CommentList from "../commentList/CommentList";
  * @returns
  */
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, showLink = true }) => {
   return (
-    <div className=" container border border-light-subtle rounded-3 my-2 py-4">
-      <Post post={post} />
+    <div className="container border border-light-subtle rounded-3 my-2 py-2">
+      <Post post={post} showLink={showLink} />
       <CommentList post={post} />
     </div>
   );
