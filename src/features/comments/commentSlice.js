@@ -3,6 +3,8 @@ import { fetchComments } from "../../api/api";
 
 const initialState = {
   commentsByPostId: {},
+  loading: false,
+  error: "",
 };
 
 export const commentsSlice = createSlice({

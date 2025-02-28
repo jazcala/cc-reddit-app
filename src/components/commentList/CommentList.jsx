@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchComments } from "../../api/api";
 import Comment from "../comment/Comment";
 
-import { Collapse, ListGroup } from "reactstrap";
-
 const CommentList = ({ post }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
@@ -37,24 +35,35 @@ const CommentList = ({ post }) => {
     return <div>Error loading comments: {error}</div>;
   }
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className=" border-top pt-2">
-      <div className="row" onClick={toggle}>
+      <div className="row">
         <div className="col text-truncate align-button py-2 text-start ">
-          By
-          <span className="text-primary fw-bold"> {post.author}</span>
+          By{" "}
+          <a
+            href={`https://www.reddit.com/u/${post.author}`}
+            target="_blank"
+            rel="noreferrer"
+            className="link-info link-offset-2 link-underline-opacity-50 fw-bold"
+          >
+            {post.author}
+          </a>
         </div>
-        <div className="col-4 btn text-end">
+        <button
+          className="col-4 btn text-end  w-auto"
+          onClick={() => setIsOpen(!isOpen)}
+          data-bs-toggle="collapse"
+          href={`#commentsList-${post.id}`}
+          aria-expanded="false"
+          aria-controls="commentsList"
+          role="button"
+        >
           <i className="bi bi-chat-left"></i>{" "}
           <span className="fw-light">{post.num_comments}</span>
-        </div>
+        </button>
       </div>
-      <Collapse isOpen={isOpen}>
-        <ListGroup id="comments">
+      <div className="collapse" id={`commentsList-${post.id}`}>
+        <ul className="list-group">
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -62,8 +71,8 @@ const CommentList = ({ post }) => {
               <Comment key={comment.id} comment={comment} />
             ))
           )}
-        </ListGroup>
-      </Collapse>
+        </ul>
+      </div>
     </div>
   );
 };

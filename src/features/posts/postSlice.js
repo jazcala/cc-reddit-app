@@ -39,7 +39,7 @@ export const postSlice = createSlice({
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.errMsg = "";
-        state.posts = mapImageURL(action.payload).map(post => ({
+        state.posts = mapImageURL(action.payload).map((post) => ({
           ...post,
           voteState: "neutral",
         }));
@@ -49,8 +49,9 @@ export const postSlice = createSlice({
         state.errMsg = action.error?.message || "Fetch failed";
       })
       .addCase(fetchPostById.fulfilled, (state, action) => {
-        console.log("Fetched post data:", action.payload);
-        const existingPost = state.posts.find(post => post.id === action.payload.id);
+        const existingPost = state.posts.find(
+          (post) => post.id === action.payload.id
+        );
         if (!existingPost) {
           state.posts.push({ ...action.payload, voteState: "neutral" });
         }

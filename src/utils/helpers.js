@@ -19,8 +19,6 @@ export const getDescription = (post) => {
 
   if (post.post_hint === "self") {
     description = post.selftext;
-  } else if (post.post_hint === "link") {
-    description = post.title;
   } else {
     // Handle other post types or extract from selftext_html if needed
     description = "";
