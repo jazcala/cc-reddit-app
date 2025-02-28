@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      <div className="position-relative m-0 p-0 row">
+      <div className="container position-relative m-auto px-0 pb-4 row">
         <SearchBar />
         <SubredditsList />
       </div>

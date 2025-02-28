@@ -3,7 +3,6 @@ import {
   setQuery,
   fetchSearchResults,
 } from "../../features/search/searchSlice";
-import { Button, Input, InputGroup } from "reactstrap";
 import SearchResults from "../searchResults/SearchResults";
 function SearchBar() {
   const dispatch = useDispatch();
@@ -27,19 +26,19 @@ function SearchBar() {
   return (
     <>
       <div className="col-10 col-lg-11 m-0 p-0">
-        {/* <div> */}
-        <InputGroup className="w-100">
-          <Input
+        <div className="input-group w-100">
+          <input
+            className="form-control"
             type="text"
             value={query}
             onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
             placeholder="Search"
           />
-          <Button onClick={handleSearch} className="col-2">
+          <button onClick={handleSearch} className="btn btn-secondary col-2">
             <i className="bi bi-search"></i>
-          </Button>
-        </InputGroup>
+          </button>
+        </div>
       </div>
       <SearchResults results={results} />
     </>

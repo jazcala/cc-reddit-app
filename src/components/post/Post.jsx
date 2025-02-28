@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 function Post({ post }) {
   return (
-    <div color="light" outline className="card pb-0">
+    <div className="card pb-0">
       <div className="row">
         <div className="col col-3">
           <Counter postId={post.id} />
